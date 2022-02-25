@@ -9,7 +9,7 @@ WORKDIR /go/src/github.com/grafana/loki
 RUN make clean && make BUILD_IN_CONTAINER=false promtail-debug
 
 
-FROM       alpine:3.9
+FROM       alpine:3.14.3
 RUN        apk add --update --no-cache ca-certificates tzdata
 COPY       --from=build /go/src/github.com/grafana/loki/cmd/promtail/promtail-debug /usr/bin/promtail-debug
 COPY       --from=build /go/bin/dlv /usr/bin/dlv
